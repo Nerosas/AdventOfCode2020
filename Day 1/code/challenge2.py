@@ -9,3 +9,4 @@ for i in range(len(list_expenses)):
         for k in range(j, len(list_expenses)):
             if list_expenses[i] + list_expenses[j] + list_expenses[k] == 2020:
                 print(list_expenses[i] * list_expenses[j] * list_expenses[k])
+                break
