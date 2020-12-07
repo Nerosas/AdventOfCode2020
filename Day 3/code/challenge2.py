@@ -8,11 +8,8 @@ def count_trees(right, down):
     count = 0
     x_coord = 0
     for y_coord in range(0, len(graph), down):
-        try:
-            point = graph[y_coord][x_coord]
-        except IndexError:
-            x_coord = x_coord % len(graph[y_coord])
-            point = graph[y_coord][x_coord]
+        x_coord = x_coord % len(graph[y_coord])
+        point = graph[y_coord][x_coord]
             
         if point == '#':
             count += 1
