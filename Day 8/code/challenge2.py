@@ -56,11 +56,8 @@ def change_code():
     for instruction in faulty_instructions:
         switch_operator(instruction)
         instructions[instruction[1]] = instruction[0][0] + ' ' + instruction[0][1]
-        outcome, accumulator, list_of_counts = run_code()
-        if outcome == True:
+        test_succeeded, accumulator, list_of_counts = run_code()
+        if test_succeeded:
             return accumulator
-        if outcome == False:
-            switch_operator(instruction)
-            instructions[instruction[1]] = instruction[0][0] + ' ' + instruction[0][1]
 
 print(change_code())
