@@ -62,7 +62,6 @@ def change_code():
         test_succeeded, accumulator, list_of_counts = run_code()
         if test_succeeded:
             return accumulator
-        if not test_succeeded:
-            flip_instruction(instruction)
+        flip_instruction(instruction)
 
 print(change_code())
