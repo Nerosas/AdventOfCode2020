@@ -33,6 +33,10 @@ def switch_operator(instruction):
 
     return instruction
 
+def flip_instruction(instruction):
+    instruction = switch_operator(instruction)
+    instructions[instruction[1]] = instruction[0][0] + ' ' + instruction[0][1]
+
 def process_instruction(instructions, count):
     instruction = instructions[count].split(' ')
     operation = instruction[0]
@@ -54,10 +58,11 @@ def find_possible_faulty_instructions():
 def change_code():
     faulty_instructions = find_possible_faulty_instructions()
     for instruction in faulty_instructions:
-        switch_operator(instruction)
-        instructions[instruction[1]] = instruction[0][0] + ' ' + instruction[0][1]
+        flip_instruction(instruction)
         test_succeeded, accumulator, list_of_counts = run_code()
         if test_succeeded:
             return accumulator
+        if not test_succeeded:
+            flip_instruction(instruction)
 
 print(change_code())
